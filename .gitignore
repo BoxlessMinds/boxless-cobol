@@ -1,0 +1,25 @@
+# Build output
+build/
+*.so
+*.o
+*.exe
+*.dll
+*.lst
+*.i
+*.c.h
+*.c.l*.h
+
+# Program output files written by tutorials/examples
+*.out
+
+# Personal scratch space
+SCRATCH_FOLDER/*
+!SCRATCH_FOLDER/.gitkeep
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/*.log

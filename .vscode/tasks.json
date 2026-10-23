@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "cwd": "${workspaceFolder}"
+  },
+  "type": "process",
+  "command": "powershell",
+  "problemMatcher": {
+    "owner": "cobol",
+    "fileLocation": ["relative", "${workspaceFolder}"],
+    "pattern": {
+      "regexp": "^(.*\\.(?:cob|cbl|cpy)):(\\d+):\\s+(error|warning|note):\\s+(.*)$",
+      "file": 1,
+      "line": 2,
+      "severity": 3,
+      "message": 4
+    }
+  },
+  "tasks": [
+    {
+      "label": "COBOL: build all",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/build.ps1", "all"],
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "COBOL: build & run current file",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/build.ps1", "run", "-Name", "${relativeFile}"],
+      "group": "build"
+    },
+    {
+      "label": "COBOL: run library tests",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/build.ps1", "test"],
+      "group": { "kind": "test", "isDefault": true }
+    },
+    {
+      "label": "COBOL: clean",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/build.ps1", "clean"]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Normalise to LF: cobc and make run inside WSL, and line-sequential
+# data files must not carry a stray CR at the end of each record.
+* text=auto eol=lf
+
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf

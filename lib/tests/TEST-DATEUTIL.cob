@@ -1,0 +1,75 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. TEST-DATEUTIL.
+      *****************************************************************
+      * Unit tests for lib/src/DATEUTIL.cob
+      *****************************************************************
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       COPY TEST-WS.
+       COPY DATEUTIL-PARMS.
+
+       PROCEDURE DIVISION.
+       MAIN-PARA.
+           DISPLAY "TEST-DATEUTIL"
+
+           MOVE "VALIDATE accepts leap day 2024-02-29" TO TEST-NAME
+           MOVE "VALIDATE" TO DU-FUNCTION
+           MOVE 20240229 TO DU-DATE-NUM
+           CALL "DATEUTIL" USING DATEUTIL-PARMS
+           MOVE "VALID" TO TEST-EXPECTED
+           MOVE DU-RESULT TO TEST-ACTUAL
+           PERFORM ASSERT-EQUAL
+
+           MOVE "VALIDATE rejects 2023-02-29" TO TEST-NAME
+           MOVE 20230229 TO DU-DATE-NUM
+           CALL "DATEUTIL" USING DATEUTIL-PARMS
+           MOVE "INVALID" TO TEST-EXPECTED
+           MOVE DU-RESULT TO TEST-ACTUAL
+           PERFORM ASSERT-EQUAL
+
+           MOVE "VALIDATE sets RC 10 for bad date" TO TEST-NAME
+           MOVE "10" TO TEST-EXPECTED
+           MOVE DU-RC TO TEST-ACTUAL
+           PERFORM ASSERT-EQUAL
+
+           MOVE "VALIDATE rejects non-numeric date" TO TEST-NAME
+           MOVE "2026OCT1" TO DU-DATE
+           CALL "DATEUTIL" USING DATEUTIL-PARMS
+           MOVE "INVALID" TO TEST-EXPECTED
+           MOVE DU-RESULT TO TEST-ACTUAL
+           PERFORM ASSERT-EQUAL
+
+           MOVE "FORMAT gives ISO YYYY-MM-DD" TO TEST-NAME
+           MOVE "FORMAT" TO DU-FUNCTION
+           MOVE 20261023 TO DU-DATE-NUM
+           CALL "DATEUTIL" USING DATEUTIL-PARMS
+           MOVE "2026-10-23" TO TEST-EXPECTED
+           MOVE DU-RESULT TO TEST-ACTUAL
+           PERFORM ASSERT-EQUAL
+
+           MOVE "DOW of 1969-07-20 is SUNDAY" TO TEST-NAME
+           MOVE "DOW" TO DU-FUNCTION
+           MOVE 19690720 TO DU-DATE-NUM
+           CALL "DATEUTIL" USING DATEUTIL-PARMS
+           MOVE "SUNDAY" TO TEST-EXPECTED
+           MOVE DU-RESULT TO TEST-ACTUAL
+           PERFORM ASSERT-EQUAL
+
+           MOVE "DOW of 2026-10-23 is FRIDAY" TO TEST-NAME
+           MOVE 20261023 TO DU-DATE-NUM
+           CALL "DATEUTIL" USING DATEUTIL-PARMS
+           MOVE "FRIDAY" TO TEST-EXPECTED
+           MOVE DU-RESULT TO TEST-ACTUAL
+           PERFORM ASSERT-EQUAL
+
+           MOVE "unknown function returns RC 90" TO TEST-NAME
+           MOVE "BOGUS" TO DU-FUNCTION
+           CALL "DATEUTIL" USING DATEUTIL-PARMS
+           MOVE "90" TO TEST-EXPECTED
+           MOVE DU-RC TO TEST-ACTUAL
+           PERFORM ASSERT-EQUAL
+
+           PERFORM TEST-SUMMARY
+           STOP RUN.
+
+       COPY TEST-PROC.
