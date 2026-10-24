@@ -27,3 +27,6 @@ desktop.ini
 *.swp
 *~
 .vscode/*.log
+
+# Source JPGs for the museum images (the site uses the WebP files)
+museum/assets/img/converted/

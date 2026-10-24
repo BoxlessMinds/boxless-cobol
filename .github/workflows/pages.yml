@@ -26,14 +26,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The site only uses the WebP images; the source JPGs in
-      # assets/img/converted/ (~100 MB) and the prompt notes stay in
-      # the repo but are not published.
+      # The prompt notes stay in the repo but are not published.
       - name: Stage site
         run: |
           mkdir _site
           cp -r museum/. _site/
-          rm -rf _site/assets/img/converted _site/IMAGE-PROMPTS.md
+          rm -f _site/IMAGE-PROMPTS.md
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
