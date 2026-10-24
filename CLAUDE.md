@@ -47,6 +47,25 @@ Tests use a tiny copybook harness: `COPY TEST-WS.` in WORKING-STORAGE and `COPY 
 - File basenames must not be C keywords (`long`, `int`, `switch`...); cobc rejects them.
 - Tutorials teach via the comment block at the top of each program; keep that style when editing lessons. Update `tutorials/README.md` / `examples/README.md` / `lib/README.md` tables when adding entries.
 
+## Writing documentation
+
+Any guide, analysis, findings write-up, README, plan or other documentation (including files in `DOCUMENTATION/` and `CONTEXT/`) must be **detailed, easy to follow and approachable**. The reader may be new to COBOL or to this repo.
+- **Detailed:** cover the why as well as the how. Include the exact commands, file paths and expected output, and don't skip steps.
+- **Easy to follow:** start with a short summary of what the reader will get, then use numbered steps for procedures and headings for each topic. Give one idea per paragraph, and link to the files you mention.
+- **Approachable:** use plain, friendly language. Define jargon and acronyms (e.g. "copybook", "FD") the first time they appear, and show a short example rather than only describing a thing.
+
+### Diagrams
+
+- **Use PlantUML when the VS Code PlantUML extension is installed.** Check with `code --list-extensions` from the PowerShell tool and look for `jebbs.plantuml`.
+- **When PlantUML is configured, pre-render to PNG instead of embedding code.** Write the source to a `.puml` file next to the document (e.g. `build-flow.puml`), render it to a `.png` with the same name, and embed the image with a link to the source: `![Build flow](build-flow.png)` then `[Diagram source](build-flow.puml)`. Commit both files, and re-render whenever the `.puml` changes. GitHub doesn't render PlantUML code blocks, so a PNG is what public readers see.
+- **How to render:** the extension's settings live in the user's VS Code settings (`%APPDATA%\Code\User\settings.json`). If `plantuml.render` is `PlantUMLServer`, POST the source to the server's `/png` endpoint. `plantuml.server` may end in `/uml` (the web UI); strip that. From the Bash tool:
+  ```bash
+  SRV=$(grep -oE '"plantuml.server": *"[^"]+"' "$APPDATA/Code/User/settings.json" | sed -E 's/.*: *"([^"]+)"/\1/')
+  curl -sf --data-binary @build-flow.puml "${SRV%/uml}/png" -o build-flow.png
+  ```
+  Then open the PNG to check it rendered. **Never write the server URL into the repo**; it's a private host, and this repo is public.
+- **If the extension isn't installed, or rendering fails**, use a ` ```mermaid ` block instead (GitHub renders Mermaid natively), and say why.
+
 ## Workspace skills (`.claude/skills/`)
 
 Use these instead of re-deriving the conventions above; user guide: [DOCUMENTATION/GUIDES/claude-skills-guide.md](DOCUMENTATION/GUIDES/claude-skills-guide.md).

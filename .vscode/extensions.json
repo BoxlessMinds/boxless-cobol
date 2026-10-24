@@ -2,6 +2,7 @@
   "recommendations": [
     "bitlang.cobol",
     "ms-vscode-remote.remote-wsl",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "jebbs.plantuml"
   ]
 }

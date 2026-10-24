@@ -18,6 +18,14 @@ building, editing COBOL, or adding programs. The essentials:
   function-code dispatch, return codes `00`/`10`/`90`.
 - When adding a tutorial, example or library module, update the table
   in that folder's README.
+- Write any guide, analysis, findings, README or other documentation
+  to be detailed, easy to follow and approachable for someone new to
+  COBOL. See "Writing documentation" in CLAUDE.md.
+- Draw diagrams in PlantUML when the `jebbs.plantuml` VS Code extension
+  is installed (check `code --list-extensions`), otherwise in Mermaid.
+  Save the source as a `.puml` file, pre-render it to a `.png` with the
+  same name, and embed the PNG with a link to the source. See
+  "Diagrams" in CLAUDE.md for how to render.
 - Lint after editing `.cob`/`.cpy`/`.dat` files:
   `bash .claude/skills/cobol-lint/check.sh [files]`.
 
