@@ -1,0 +1,43 @@
+# Publish the COBOL Museum (museum/) to GitHub Pages on every push to
+# main. One-time setup: Settings -> Pages -> Source: GitHub Actions.
+name: Publish museum
+
+on:
+  push:
+    branches: [main]
+    paths: ["museum/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # The site only uses the WebP images; the source JPGs in
+      # assets/img/converted/ (~100 MB) and the prompt notes stay in
+      # the repo but are not published.
+      - name: Stage site
+        run: |
+          mkdir _site
+          cp -r museum/. _site/
+          rm -rf _site/assets/img/converted _site/IMAGE-PROMPTS.md
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

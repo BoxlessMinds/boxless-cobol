@@ -111,8 +111,8 @@
       "<span>The COBOL Museum &middot; part of the boxless-cobol playground." +
       " Admission free. Coffee from 1959.</span>" +
       '<span><a href="resources.html">Reading Room (resources)</a> &middot; ' +
-      '<a href="IMAGE-PROMPTS.md">Image prompts</a> &middot; ' +
-      '<a href="../tutorials/README.md">Lessons</a></span>' +
+      '<a href="https://github.com/BoxlessMinds/boxless-cobol/blob/main/museum/IMAGE-PROMPTS.md">Image prompts</a> &middot; ' +
+      '<a href="https://github.com/BoxlessMinds/boxless-cobol/blob/main/tutorials/README.md">Lessons</a></span>' +
       "</div></footer>";
   }
 

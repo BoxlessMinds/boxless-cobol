@@ -39,7 +39,7 @@ failures, and finish by running one tutorial program.
 
 ## The COBOL Museum
 
-[museum/](museum/) is a small static website that tells the story behind the code: where COBOL came from, how a program is put together, and why it still runs payroll and banks. Open [museum/index.html](museum/index.html) in a browser. It needs no build step or server.
+[museum/](museum/) is a small static website that tells the story behind the code: where COBOL came from, how a program is put together, and why it still runs payroll and banks. Visit it at **<https://boxlessminds.github.io/boxless-cobol/>**, or open [museum/index.html](museum/index.html) in a browser. It needs no build step or server. Every push to `main` that changes `museum/` republishes the site through [.github/workflows/pages.yml](.github/workflows/pages.yml).
 
 Some galleries tie straight back to this repo:
 
