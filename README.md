@@ -9,15 +9,18 @@ A personal workspace for learning and writing COBOL. It has four parts:
 
 ## Prerequisites
 
-- Windows with **WSL** and **GnuCOBOL** installed inside it. On Ubuntu, run `sudo apt install gnucobol make`.
-- Check the install with `wsl cobc --version`. This repo was built against GnuCOBOL 4.0-early-dev, and 3.x should also work.
+- **GnuCOBOL** and **make**.
+  - **Windows:** install them inside **WSL**. On Ubuntu, run `sudo apt install gnucobol make`.
+  - **Linux:** install them with your package manager (e.g. `sudo apt install gnucobol make`), then run `make` directly. `build.ps1` is only the Windows wrapper.
+  - **macOS:** `brew install gnucobol`, then run `make` directly. macOS hasn't been tested yet.
+- Check the install with `cobc --version` (on Windows, `wsl cobc --version`). This repo was built against GnuCOBOL 4.0-early-dev, and 3.x should also work.
 - VS Code with the recommended extensions in [.vscode/extensions.json](.vscode/extensions.json). These are optional.
 
 ## Quick start
 
 1. Install the prerequisites above.
-2. Run `.\build.ps1 test` from the repo root. Every test should pass.
-3. Run your first lesson: `.\build.ps1 run -Name tutorials\07-files\files.cob`.
+2. Run `.\build.ps1 test` from the repo root (`make test` on Linux or macOS). Every test should pass.
+3. Run your first lesson: `.\build.ps1 run -Name tutorials\01-hello\hello.cob` (`make run NAME=tutorials/01-hello/hello.cob` on Linux or macOS).
 
 ### Let an AI assistant set it up
 
@@ -94,9 +97,10 @@ SCRATCH_FOLDER/       personal scratch space (git-ignored)
 Sources use **fixed format**:
 - columns 1–6 are the sequence area
 - column 7 is the indicator
-- code goes in columns 8–72
+- columns 8–11 are **Area A**, where division, section and paragraph names start
+- columns 12–72 are **Area B**, where statements go
 
-The editor shows rulers at those columns.
+The editor shows rulers at columns 6, 7, 11 and 72 to mark those boundaries.
 
 ## License
 

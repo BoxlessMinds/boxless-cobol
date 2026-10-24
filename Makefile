@@ -1,7 +1,8 @@
-# COBOL playground build - run inside WSL (or via .\build.ps1 on Windows).
+# COBOL playground build - run with make on Linux, macOS or WSL
+# (or via .\build.ps1 on Windows).
 #
 #   make            build library modules, tutorials and examples
-#   make lib        build lib/src/*.cob into build/lib/*.so
+#   make lib        build lib/src/*.cob into build/lib/*.so (.dylib on macOS)
 #   make test       build and run every lib/tests/TEST-*.cob
 #   make run NAME=tutorials/01-hello/hello.cob
 #                   build one program and run it from its own folder
@@ -9,6 +10,10 @@
 
 COBC     ?= cobc
 COBFLAGS ?= -Wall -I lib/copybooks
+
+# Library module extension: whatever the runtime looks for on CALL
+# (so on Linux, dylib on macOS).
+MODEXT ?= $(or $(shell $(COBC) --info 2>/dev/null | sed -n 's/^COB_MODULE_EXT *: *//p'),so)
 
 BUILD  := build
 BIN    := $(BUILD)/bin
@@ -23,7 +28,7 @@ COPYBOOKS := $(wildcard lib/copybooks/*.cpy)
 # build/bin/<basename> for each source given
 bin_of = $(addprefix $(BIN)/,$(notdir $(basename $(1))))
 
-LIB_MODS  := $(patsubst lib/src/%.cob,$(LIBDIR)/%.so,$(LIB_SRC))
+LIB_MODS  := $(patsubst lib/src/%.cob,$(LIBDIR)/%.$(MODEXT),$(LIB_SRC))
 TUT_BINS  := $(call bin_of,$(TUT_SRC))
 EX_BINS   := $(call bin_of,$(EX_SRC))
 TEST_BINS := $(call bin_of,$(TEST_SRC))
@@ -42,7 +47,7 @@ tutorials: $(TUT_BINS)
 examples: $(EX_BINS)
 tests: $(TEST_BINS)
 
-$(LIBDIR)/%.so: lib/src/%.cob $(COPYBOOKS) | $(LIBDIR)
+$(LIBDIR)/%.$(MODEXT): lib/src/%.cob $(COPYBOOKS) | $(LIBDIR)
 	$(COBC) -m $(COBFLAGS) -o $@ $<
 
 $(BIN)/%: %.cob $(COPYBOOKS) | $(BIN)
