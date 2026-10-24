@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Gift Shop · The COBOL Museum</title>
+<meta name="description" content="Parody COBOL merchandise (nothing is for sale) plus a free printable cheat sheet and punch-card bookmarks.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="gift-shop">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 10 &middot; Exit through the gift shop</p>
+    <h1>The Gift Shop</h1>
+    <p class="lede">Every museum has one. Ours has a slight problem: the
+      till runs on COBOL and nobody has the password.</p>
+  </section>
+
+  <p class="notice"><b>Notice:</b> nothing here is for sale. These are
+    jokes. The prices are in PIC clauses. The free downloads at the bottom
+    really are free.</p>
+
+  <div class="card-grid">
+    <article class="card">
+      <figure class="exhibit-img"><div class="frame" style="--ratio:1/1" data-prompt="IMG-23"
+        data-file="img-23-tshirt.webp" data-alt="A folded retro T-shirt printed I SURVIVED Y2K"></div></figure>
+      <h3>"I Survived Y2K" T-shirt</h3>
+      <p>100% cotton, 0% date bugs. Available in sizes 99 and 00.</p>
+      <span class="price">PIC $$9.99 &middot; SOLD OUT SINCE 2000</span>
+    </article>
+    <article class="card">
+      <figure class="exhibit-img"><div class="frame" style="--ratio:1/1" data-prompt="IMG-24"
+        data-file="img-24-bookmarks.webp" data-alt="A fan of punch-card bookmarks with tassels"></div></figure>
+      <h3>Punch-card bookmarks</h3>
+      <p>80 columns of reading pleasure. Do not drop the set.</p>
+      <span class="price">FREE &middot; print them below</span>
+    </article>
+    <article class="card">
+      <figure class="exhibit-img"><div class="frame" style="--ratio:1/1" data-prompt="IMG-02c"
+        data-file="img-02c-dot-plush.webp" data-alt="Dot the period mascot as a soft plush toy on a shelf"></div></figure>
+      <h3>Dot plush toy</h3>
+      <p>Small, round and essential. Lose it once and you'll understand.</p>
+      <span class="price">PIC 9V99 &middot; 0.01 (very small)</span>
+    </article>
+    <article class="card">
+      <figure class="exhibit-img"><div class="frame" style="--ratio:1/1" data-prompt="IMG-25"
+        data-file="img-25-mug.webp" data-alt="A blue enamel mug printed KEEP CALM AND STOP RUN"></div></figure>
+      <h3>"Keep Calm and STOP RUN" mug</h3>
+      <p>Holds one PIC 9(3) millilitres of batch-window coffee.</p>
+      <span class="price">PIC ZZ9.99 &middot; &nbsp;12.00</span>
+    </article>
+    <article class="card">
+      <div class="sticker">MY OTHER LANGUAGE IS ALSO COBOL</div>
+      <h3>Bumper sticker</h3>
+      <p>For the car that has been running since 1974 and never needed a rewrite.</p>
+      <span class="price">PIC X(5) &middot; "FREE "</span>
+    </article>
+    <article class="card">
+      <div class="sticker" style="transform:rotate(2deg)">ADD 1 TO COBOL<br>GIVING COBOL</div>
+      <h3>Fridge magnet</h3>
+      <p>The Verbose Hall's treasure, in a size your fridge can handle.</p>
+      <span class="price">ON SIZE ERROR: does not fit</span>
+    </article>
+  </div>
+
+  <div class="ruler" aria-hidden="true"><span>1-6 SEQ</span><span>7</span><span>8-11 A</span><span>12-72 AREA B</span><span>73-80 ID</span></div>
+
+  <section id="cheatsheet-area">
+    <h2>Free download: the COBOL cheat sheet</h2>
+    <p>One page, printable. Press the button and choose "Save as PDF" if you
+      want a file.</p>
+    <div class="btn-row"><button class="btn" type="button" data-print-target="cheatsheet">Print the cheat sheet</button></div>
+    <div class="cheatsheet">
+      <section>
+        <h3>The four divisions</h3>
+        <ul>
+          <li><code>IDENTIFICATION</code>: the name (<code>PROGRAM-ID</code>)</li>
+          <li><code>ENVIRONMENT</code>: files and machine setup</li>
+          <li><code>DATA</code>: every variable, declared up front</li>
+          <li><code>PROCEDURE</code>: the code that runs</li>
+        </ul>
+      </section>
+      <section>
+        <h3>The columns</h3>
+        <ul>
+          <li>1&ndash;6: sequence number (ignored)</li>
+          <li>7: <code>*</code> comment, <code>-</code> continuation</li>
+          <li>8&ndash;11: Area A (divisions, paragraphs, 01)</li>
+          <li>12&ndash;72: Area B (statements)</li>
+          <li>73+: ignored. Silently.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>PIC symbols</h3>
+        <ul>
+          <li><code>9</code> digit &middot; <code>X</code> any char &middot; <code>A</code> letter</li>
+          <li><code>V</code> implied point (no byte) &middot; <code>S</code> signed</li>
+          <li><code>Z</code> zero becomes space &middot; <code>$ , .</code> printed</li>
+          <li><code>9(5)</code> = <code>99999</code></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Top 10 verbs</h3>
+        <ul>
+          <li><code>MOVE</code> &middot; <code>ADD</code> &middot; <code>SUBTRACT</code></li>
+          <li><code>MULTIPLY</code> &middot; <code>DIVIDE</code> &middot; <code>COMPUTE</code></li>
+          <li><code>IF</code> &middot; <code>EVALUATE</code> &middot; <code>PERFORM</code></li>
+          <li><code>DISPLAY</code> (and finally <code>STOP RUN</code>)</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <section id="bookmarks-area">
+    <h2>Free download: punch-card bookmarks</h2>
+    <div class="btn-row"><button class="btn" type="button" data-print-target="bookmarks">Print the bookmarks</button></div>
+    <div class="bookmarks">
+      <div class="bookmark"><b>COBOL</b> EST. 1959 &middot; STILL RUNNING</div>
+      <div class="bookmark"><b>STOP RUN.</b> &middot; KEEP CALM</div>
+      <div class="bookmark"><b>PIC X(80)</b> &middot; ONE CARD, ONE LINE</div>
+      <div class="bookmark"><b>END-IF</b> &middot; ALWAYS CLOSE YOUR IFS</div>
+      <div class="bookmark"><b>. . .</b> &middot; DOT WAS HERE</div>
+    </div>
+  </section>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> I asked for royalties on the
+      plush toy. They offered me PIC 9V99. I'm still doing the maths.</p>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

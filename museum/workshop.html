@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Living Workshop · The COBOL Museum</title>
+<meta name="description" content="Install GnuCOBOL and work through this repo's lessons, examples and library modules.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="workshop">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 9 &middot; Hands on</p>
+    <h1>The Living Workshop</h1>
+    <p class="lede">Enough looking. In this room you write COBOL. Everything
+      here links to a real program in this repo that you can build, run
+      and change.</p>
+  </section>
+
+  <figure class="exhibit-img">
+    <div class="frame" style="--ratio:16/9" data-prompt="IMG-22"
+      data-file="img-22-workshop.webp"
+      data-alt="A cozy workbench with a modern laptop showing green code next to a vintage keypunch machine"></div>
+    <figcaption>The workbench. Old tools on the left, new tools on the right.</figcaption>
+  </figure>
+
+  <h2>Exhibit: Your Toolkit</h2>
+  <div class="exhibit">
+    <div class="placard">
+      <h3>1. Install the compiler</h3>
+      <p class="meta">Windows: GnuCOBOL lives inside WSL</p>
+      <p>This repo compiles with <b>GnuCOBOL</b> (<code>cobc</code>) inside
+        WSL. In PowerShell:</p>
+      <pre class="terminal">wsl --install
+wsl sudo apt update
+wsl sudo apt install gnucobol make</pre>
+      <p>On Linux, skip the <code>wsl</code> and run the apt lines directly.
+        On a Mac, <code>brew install gnucobol</code>.</p>
+    </div>
+    <div class="placard">
+      <h3>2. Build and run</h3>
+      <p class="meta">From the repo root, in PowerShell</p>
+      <pre class="terminal">.\build.ps1
+.\build.ps1 run -Name tutorials\01-hello\hello.cob
+.\build.ps1 test</pre>
+      <p>The first line builds everything. The second runs one program. The
+        third runs the library's unit tests. Inside WSL, use
+        <code>make</code>, <code>make run NAME=...</code> and
+        <code>make test</code>.</p>
+    </div>
+  </div>
+
+  <h2>Exhibit: The Lesson Path</h2>
+  <p>Eight lessons, in order. Each one is a single program; the comment
+    block at the top is the lesson. See also
+    <a href="../tutorials/README.md">tutorials/README.md</a> for exercises.</p>
+  <div class="card-grid">
+    <article class="card"><span class="num">LESSON 01</span><h3>Hello</h3>
+      <p>Program structure, the four divisions, fixed-format columns.</p>
+      <a class="stretch" href="../tutorials/01-hello/hello.cob">hello.cob</a></article>
+    <article class="card"><span class="num">LESSON 02</span><h3>Data Division</h3>
+      <p>Level numbers, PIC clauses, group items, 88-levels, edited pictures.</p>
+      <a class="stretch" href="../tutorials/02-data-division/datadiv.cob">datadiv.cob</a></article>
+    <article class="card"><span class="num">LESSON 03</span><h3>Arithmetic</h3>
+      <p>ADD, SUBTRACT, MULTIPLY, DIVIDE, COMPUTE, ROUNDED, ON SIZE ERROR.</p>
+      <a class="stretch" href="../tutorials/03-arithmetic/arith.cob">arith.cob</a></article>
+    <article class="card"><span class="num">LESSON 04</span><h3>Control Flow</h3>
+      <p>IF, EVALUATE and every flavour of PERFORM.</p>
+      <a class="stretch" href="../tutorials/04-control-flow/control.cob">control.cob</a></article>
+    <article class="card"><span class="num">LESSON 05</span><h3>Tables</h3>
+      <p>OCCURS, INDEXED BY, SEARCH and SEARCH ALL.</p>
+      <a class="stretch" href="../tutorials/05-tables/tables.cob">tables.cob</a></article>
+    <article class="card"><span class="num">LESSON 06</span><h3>Strings</h3>
+      <p>STRING, UNSTRING, INSPECT, reference modification, functions.</p>
+      <a class="stretch" href="../tutorials/06-strings/strings.cob">strings.cob</a></article>
+    <article class="card"><span class="num">LESSON 07</span><h3>Files</h3>
+      <p>SELECT, FD, OPEN, READ, WRITE, CLOSE and FILE STATUS.</p>
+      <a class="stretch" href="../tutorials/07-files/files.cob">files.cob</a></article>
+    <article class="card"><span class="num">LESSON 08</span><h3>Subprograms</h3>
+      <p>CALL, LINKAGE SECTION, BY REFERENCE vs BY CONTENT.</p>
+      <a class="stretch" href="../tutorials/08-subprograms/subprog.cob">subprog.cob</a></article>
+  </div>
+
+  <h3>After the lessons</h3>
+  <div class="card-grid">
+    <article class="card"><span class="num">EXAMPLE</span><h3>FizzBuzz</h3>
+      <p>The classic, with <code>EVALUATE ... ALSO</code> and <code>FUNCTION MOD</code>.</p>
+      <a class="stretch" href="../examples/fizzbuzz/fizzbuzz.cob">fizzbuzz.cob</a></article>
+    <article class="card"><span class="num">EXAMPLE</span><h3>Payroll Report</h3>
+      <p>Fixed-width records, overtime, tax and department subtotals.</p>
+      <a class="stretch" href="../examples/payroll-report/payroll.cob">payroll.cob</a></article>
+    <article class="card"><span class="num">LIBRARY</span><h3>STRUTIL</h3>
+      <p>UPPER, LOWER, TRIM and REVERSE, called dynamically, with unit tests.</p>
+      <a class="stretch" href="../lib/src/STRUTIL.cob">STRUTIL.cob</a></article>
+    <article class="card"><span class="num">LIBRARY</span><h3>DATEUTIL</h3>
+      <p>Validate and format dates, and work out the day of the week.</p>
+      <a class="stretch" href="../lib/src/DATEUTIL.cob">DATEUTIL.cob</a></article>
+  </div>
+
+  <h2>Exhibit: Read Real Code</h2>
+  <p>This is lesson 01 from the repo, with part of its comment block left out. The green ruler
+    shows the columns. Comment lines have <code>*</code> in column 7, and
+    the code starts at column 8.</p>
+<pre class="cobol"><span class="col-ruler">----+----1----+----2----+----3----+----4----+----5----+----6----+----7--</span><code>       <span class="k">IDENTIFICATION DIVISION.</span>
+       <span class="k">PROGRAM-ID.</span> HELLO.
+<span class="c">      *****************************************************************
+      * Lesson 01 - Hello, COBOL
+      *
+      * Fixed-format source layout (the classic 80-column card):
+      *   columns 1-6   sequence number area (ignored)
+      *   column  7     indicator: '*' = comment line, '-' = continue
+      *   columns 8-11  Area A: division/section/paragraph names, 01s
+      *   columns 12-72 Area B: statements
+      *****************************************************************</span>
+       <span class="k">PROCEDURE DIVISION.</span>
+           <span class="k">DISPLAY</span> <span class="s">"Hello from COBOL"</span>.
+           <span class="k">STOP RUN</span>.</code></pre>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> Change "Hello from COBOL" to
+      your own name and run it again. Congratulations, you're a COBOL
+      programmer. The banks will be in touch.</p>
+  </div>
+
+  <div class="try-it"><p>Start here:
+    <code>.\build.ps1 run -Name tutorials\01-hello\hello.cob</code>.
+    Stuck? The <a href="resources.html">Reading Room</a> is next door.</p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

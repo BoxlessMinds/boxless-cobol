@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Punch Card Room · The COBOL Museum</title>
+<meta name="description" content="The 80-column punch card and why COBOL code still stops at column 72. Punch your own card.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="punch-cards">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 2 &middot; Cardboard computing</p>
+    <h1>The Punch Card Room</h1>
+    <p class="lede">Before screens, a program was a box of stiff paper cards,
+      one line of code per card, with holes punched in it. The card had 80
+      columns. COBOL still remembers them.</p>
+  </section>
+
+  <div class="exhibit wide">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:21/9" data-prompt="IMG-09"
+        data-file="img-09-punch-card.webp"
+        data-alt="A giant 80-column punch card hanging on a gallery wall behind a velvet rope"></div>
+      <figcaption>"The 80-Column Card", cardstock on wall. Please do not fold, spindle or mutilate.</figcaption>
+    </figure>
+  </div>
+
+  <div class="placard">
+    <h3>The 80-Column Card</h3>
+    <p class="meta">IBM card format, introduced 1928</p>
+    <p>Each of the 80 columns holds one character. A character is stored as
+      a pattern of holes in 12 rows. The keypunch machine also printed the
+      character along the top so humans could read it. COBOL divided the
+      card into zones, and fixed-format COBOL still uses them today:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Columns</th><th>Zone</th><th>Used for</th></tr>
+      <tr><td>1&ndash;6</td><td>Sequence area</td><td>Card numbers, so a dropped deck could be put back in order</td></tr>
+      <tr><td>7</td><td>Indicator</td><td><code>*</code> comment, <code>-</code> continuation, <code>/</code> new page</td></tr>
+      <tr><td>8&ndash;11</td><td>Area A</td><td>Division, section and paragraph names; <code>01</code> levels</td></tr>
+      <tr><td>12&ndash;72</td><td>Area B</td><td>Statements: the actual code</td></tr>
+      <tr><td>73&ndash;80</td><td>Identification</td><td>The program's name or deck label. The compiler ignores it.</td></tr>
+    </table></div>
+  </div>
+
+  <div class="ruler" aria-hidden="true"><span>1-6 SEQ</span><span>7</span><span>8-11 A</span><span>12-72 AREA B</span><span>73-80 ID</span></div>
+
+  <h2>Touch screen: Punch Your Own Card</h2>
+  <div class="console">
+    <p class="console-title">Keypunch station 029</p>
+    <label for="card-input">Type a line of COBOL (start with 7 spaces for code)</label>
+    <input type="text" id="card-input" autocomplete="off" spellcheck="false"
+      value='       DISPLAY "HELLO FROM THE MUSEUM".'>
+    <div class="btn-row">
+      <button class="btn secondary" type="button" data-card-sample='       DISPLAY "HELLO FROM THE MUSEUM".'>A statement</button>
+      <button class="btn secondary" type="button" data-card-sample="      * THIS WHOLE LINE IS A COMMENT">A comment</button>
+      <button class="btn secondary" type="button" data-card-sample="000100 PROCEDURE DIVISION.">Numbered card</button>
+      <button class="btn secondary" type="button" data-card-sample='           MOVE "A VERY LONG LITERAL THAT KEEPS GOING" TO WS-NAME-FIELD.'>Too long!</button>
+    </div>
+    <div class="zone-key" aria-hidden="true">
+      <span><i style="background:rgba(160,130,60,.35)"></i>1-6 sequence</span>
+      <span><i style="background:rgba(176,141,60,.6)"></i>7 indicator</span>
+      <span><i style="background:rgba(31,78,140,.3)"></i>8-11 Area A</span>
+      <span><i style="background:#f6e7b8"></i>12-72 Area B</span>
+      <span><i style="background:rgba(179,38,30,.3)"></i>73-80 ignored</span>
+    </div>
+    <div class="card-scroll"><div class="punchcard" id="card"></div></div>
+    <div id="card-readout" aria-live="polite"></div>
+  </div>
+
+  <div class="exhibit">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:4/3" data-prompt="IMG-10"
+        data-file="img-10-dropped-deck.webp"
+        data-alt="A shocked 1960s programmer looking at punch cards scattered across the floor"></div>
+      <figcaption>Reconstruction: The Card Deck Disaster.</figcaption>
+    </figure>
+    <div class="placard">
+      <h3>The Card Deck Disaster</h3>
+      <p class="meta">Happened in every computer room, eventually</p>
+      <p>A big program could be thousands of cards. Drop the box and your
+        program is now in a random order. That's what the sequence numbers
+        in columns 1&ndash;6 were for: a card sorter could put them back.</p>
+      <p>The low-tech backup: draw a diagonal line with a marker across the
+        top edge of the whole deck. If the cards got shuffled, the stripe
+        showed you which ones were out of place.</p>
+    </div>
+  </div>
+
+  <div class="placard">
+    <h3>Why this repo still cares</h3>
+    <p class="meta">A note from the curators</p>
+    <p>The programs in this playground use fixed format. If a line goes past
+      column 72, the compiler <b>silently ignores</b> the rest. There's no
+      error message. Your code just quietly loses its ending. So the repo's
+      <code>.editorconfig</code> draws a guide at column 72, and the
+      <code>cobol-lint</code> checker flags any line that runs over.</p>
+  </div>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> If I end up in column 73,
+      I'm invisible. Then your sentence never ends. Ask me how I know.</p>
+  </div>
+
+  <div class="try-it"><p>The comment block at the top of
+    <a href="../tutorials/01-hello/hello.cob">lesson 01</a> is a map of the
+    card. Then lint your own file:
+    <code>bash .claude/skills/cobol-lint/check.sh</code></p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/punchcard.js"></script>
+</body>
+</html>

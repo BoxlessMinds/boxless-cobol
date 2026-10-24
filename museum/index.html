@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The COBOL Museum</title>
+<meta name="description" content="The Museum of Common Business-Oriented Language: a walk-through museum of COBOL, from 1959 to the code that still runs payroll.">
+<meta property="og:title" content="The COBOL Museum">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="index">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+<div class="ticker" aria-live="polite"><span id="ticker-text">Fun fact: COBOL is older than the ATM, the computer mouse and the moon landing.</span><span class="cursor" aria-hidden="true"></span></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Welcome &middot; Admission free</p>
+    <h1>The Museum of Common Business-Oriented Language</h1>
+    <p class="lede">The coffee is from 1959, the exhibits still run payroll,
+      and nothing here has been switched off. Take the guided tour, wander
+      at your own pace, or go straight to the workshop and write some
+      COBOL yourself.</p>
+  </section>
+
+  <figure class="exhibit-img">
+    <div class="frame" style="--ratio:16/9" data-prompt="IMG-01"
+      data-file="img-01-museum-exterior.webp"
+      data-alt="A grand mid-century museum at dusk with a banner reading COBOL: Still Running Since 1959"></div>
+    <figcaption>The museum at dusk. The lights have been on since 1959.</figcaption>
+  </figure>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02a"
+      data-file="img-02a-dot-waving.webp" data-alt="Dot, a small round period character, waving"></div></figure>
+    <p class="bubble"><strong>Hi! I'm Dot.</strong> In COBOL I end sentences.
+      Please don't lose me. People have lost me. It went badly. I'll be your
+      docent today, and I'll pop up in each gallery with a tip.</p>
+  </div>
+
+  <h2>Three ways in</h2>
+  <div class="ways">
+    <a class="way" href="origins.html"><strong>The Guided Tour</strong>
+      About 15 minutes. Twelve galleries in order, from a 1959 meeting to a
+      quiz at the exit.</a>
+    <a class="way" href="workshop.html"><strong>I just want to write COBOL</strong>
+      Straight to the Living Workshop: install the compiler and run lesson 01.</a>
+    <a class="way" href="verbs.html"><strong>I'm here for the jokes</strong>
+      The Verbose Hall, home of <code>ADD 1 TO COBOL GIVING COBOL</code>.</a>
+  </div>
+
+  <div class="ruler" aria-hidden="true"><span>1-6 SEQ</span><span>7</span><span>8-11 A</span><span>12-72 AREA B</span><span>73-80 ID</span></div>
+
+  <h2 id="floor-plan">Floor plan</h2>
+  <p>Every room links to its gallery. The guided tour runs clockwise from
+    the top left.</p>
+  <nav class="floorplan" aria-label="Floor plan">
+    <a href="origins.html" style="grid-area:origins"><b>1. Hall of Origins</b>1959 and all that</a>
+    <a href="punch-cards.html" style="grid-area:punch"><b>2. Punch Card Room</b>Why column 72 matters</a>
+    <a href="divisions.html" style="grid-area:divisions"><b>3. Four Divisions</b>A program's four rooms</a>
+    <a href="pictures.html" style="grid-area:pictures"><b>4. Hall of PICtures</b>PIC clauses, framed</a>
+    <a href="verbs.html" style="grid-area:verbs"><b>5. Verbose Hall</b>MOVE, ADD, PERFORM</a>
+    <a href="vault.html" style="grid-area:vault"><b>6. The Vault</b>COBOL at work today</a>
+    <a href="y2k.html" style="grid-area:y2k"><b>7. Y2K Bunker</b>Two digits, one millennium</a>
+    <a href="timeline.html" style="grid-area:timeline"><b>8. Timeline Corridor</b>COBOL-60 to 2023</a>
+    <a class="lobby" href="#main" style="grid-area:lobby"><b>Grand Lobby</b>You are here</a>
+    <a href="workshop.html" style="grid-area:workshop"><b>9. Living Workshop</b>Run real COBOL</a>
+    <a href="gift-shop.html" style="grid-area:gift"><b>10. Gift Shop</b>Nothing is for sale</a>
+    <a href="resources.html" style="grid-area:reading"><b>11. Reading Room</b>Books, links, tools</a>
+    <a href="quiz.html" style="grid-area:quiz"><b>Exit</b>The Docent Quiz</a>
+  </nav>
+
+  <div class="exhibit">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:4/3" data-prompt="IMG-03"
+        data-file="img-03-floor-plan.webp"
+        data-alt="An illustrated vintage museum floor plan with eleven rooms around a central lobby"></div>
+      <figcaption>The printed map from the information desk. Please take one.</figcaption>
+    </figure>
+    <div class="placard">
+      <h3>Before you start</h3>
+      <p class="meta">Information desk</p>
+      <ul class="holes">
+        <li>Each gallery has short <b>placards</b>. Open "Tell me more" if you
+          want the longer story.</li>
+        <li>Some galleries have <b>touch screens</b>: small things to type
+          into and click. Nothing breaks.</li>
+        <li>Every gallery ends with a <b>Try it</b> box that links to a real
+          lesson in this repo.</li>
+        <li>Find it too bright? Use the <b>Lights off</b> switch at the top
+          for green-screen mode.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  var facts = [
+    "Fun fact: COBOL is older than the ATM, the computer mouse and the moon landing.",
+    "Fun fact: COBOL stands for COmmon Business-Oriented Language.",
+    "Fun fact: in December 1960 the same COBOL program ran on two different makers' computers.",
+    "Fun fact: a COBOL sentence ends with a period. Dot would like you to remember that.",
+    "Fun fact: the year 2000 problem was mostly fixed before anyone noticed it.",
+    "Fun fact: the 80-column punch card is why COBOL code stops at column 72.",
+    "Fun fact: the current COBOL standard is from 2023. It is still being updated.",
+    "Fun fact: PIC is short for PICTURE. Every COBOL variable has one."
+  ];
+  var el = document.getElementById("ticker-text");
+  var reduce = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var n = 0;
+  if (!el || reduce) { return; }
+  setInterval(function () {
+    n = (n + 1) % facts.length;
+    el.textContent = facts[n];
+  }, 6000);
+})();
+</script>
+</body>
+</html>

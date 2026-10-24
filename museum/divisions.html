@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Four Divisions Wing · The COBOL Museum</title>
+<meta name="description" content="IDENTIFICATION, ENVIRONMENT, DATA and PROCEDURE: the four rooms every COBOL program is built from.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="divisions">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 3 &middot; Architecture</p>
+    <h1>The Four Divisions Wing</h1>
+    <p class="lede">A COBOL program is a building with four rooms, always in
+      the same order. You always know where to look: who the program is,
+      what machine and files it uses, what data it holds, and what it does.</p>
+  </section>
+
+  <nav class="division-tabs" aria-label="Rooms in this wing">
+    <a href="#identification">IDENTIFICATION</a>
+    <a href="#environment">ENVIRONMENT</a>
+    <a href="#data">DATA</a>
+    <a href="#procedure">PROCEDURE</a>
+  </nav>
+
+  <div class="exhibit" id="identification">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:4/3" data-prompt="IMG-11a"
+        data-file="img-11a-identification.webp"
+        data-alt="A retro reception desk with a name badge on a stand and a sign reading IDENTIFICATION"></div>
+      <figcaption>Room 1: the reception desk.</figcaption>
+    </figure>
+    <div class="placard">
+      <h3>IDENTIFICATION DIVISION</h3>
+      <p class="meta">Required &middot; "Hello, my name is..."</p>
+      <p>The reception desk. It gives the program its name with
+        <code>PROGRAM-ID</code>. That name is how other programs
+        <code>CALL</code> it. In this repo's library, the PROGRAM-ID must
+        match the file name.</p>
+<pre class="cobol"><span class="col-ruler">----+----1----+----2----+----3</span><code>       <span class="k">IDENTIFICATION DIVISION.</span>
+       <span class="k">PROGRAM-ID.</span> HELLO.</code></pre>
+    </div>
+  </div>
+
+  <div class="exhibit flip" id="environment">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:4/3" data-prompt="IMG-11b"
+        data-file="img-11b-environment.webp"
+        data-alt="A 1960s machine room with tape drives and labeled filing cabinets under an ENVIRONMENT sign"></div>
+      <figcaption>Room 2: the machine room.</figcaption>
+    </figure>
+    <div class="placard">
+      <h3>ENVIRONMENT DIVISION</h3>
+      <p class="meta">Optional &middot; The machine room</p>
+      <p>Everything that depends on the outside world lives here, mainly the
+        files. <code>FILE-CONTROL</code> connects the name the program uses
+        to a real file on disk. If you move to a new computer, this is the
+        room you redecorate. The rest of the building can stay the same.</p>
+<pre class="cobol"><span class="col-ruler">----+----1----+----2----+----3----+----4</span><code>       <span class="k">ENVIRONMENT DIVISION.</span>
+       <span class="k">INPUT-OUTPUT SECTION.</span>
+       <span class="k">FILE-CONTROL.</span>
+           <span class="k">SELECT</span> EMP-FILE <span class="k">ASSIGN TO</span> <span class="s">"employees.dat"</span>.</code></pre>
+    </div>
+  </div>
+
+  <div class="exhibit" id="data">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:4/3" data-prompt="IMG-11c"
+        data-file="img-11c-data.webp"
+        data-alt="A library of labeled boxes nested inside larger boxes under a DATA sign"></div>
+      <figcaption>Room 3: the storage library.</figcaption>
+    </figure>
+    <div class="placard">
+      <h3>DATA DIVISION</h3>
+      <p class="meta">Optional (but nearly always there) &middot; The library</p>
+      <p>Every variable is declared here before any code runs. Each one gets a
+        <b>level number</b> (where it sits in the box) and a
+        <b>PIC clause</b> (its exact size and type). There's no "let x = 5"
+        anywhere else. The next gallery is all about PIC.</p>
+    </div>
+  </div>
+
+  <h2>Touch screen: The Level Numbers Russian Doll</h2>
+  <div class="console doll">
+    <p class="console-title">Open the boxes &middot; from lesson 02</p>
+    <p>A <b>group item</b> is a box that holds smaller items. An
+      <b>elementary item</b> has a PIC clause and holds the actual data.
+      Bigger level numbers sit inside smaller ones. Click to open.</p>
+    <details>
+      <summary>01 WS-CUSTOMER (group: 35 bytes)</summary>
+      <p class="note">The whole customer record. It has no PIC of its own; it's just the sum of its parts, in order.</p>
+      <div class="leaf">05 WS-CUST-ID &nbsp; PIC 9(5) &nbsp; VALUE 42 &rarr; "00042"</div>
+      <details>
+        <summary>05 WS-CUST-NAME (group: 20 bytes)</summary>
+        <p class="note">A box inside the box.</p>
+        <div class="leaf">10 WS-FIRST-NAME &nbsp; PIC X(10) &rarr; "Grace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"</div>
+        <div class="leaf">10 WS-LAST-NAME &nbsp; PIC X(10) &rarr; "Hopper&nbsp;&nbsp;&nbsp;&nbsp;"</div>
+      </details>
+      <div class="leaf">05 WS-BALANCE &nbsp; PIC S9(7)V99 &rarr; -1234.50 (9 bytes, no "." stored)</div>
+      <details>
+        <summary>05 WS-STATUS &nbsp; PIC X &nbsp; VALUE "A"</summary>
+        <p class="note">88-levels aren't boxes. They're names for values this field can hold, and they read like true/false.</p>
+        <div class="leaf">88 WS-ACTIVE &nbsp; VALUE "A" &rarr; true right now</div>
+        <div class="leaf">88 WS-CLOSED &nbsp; VALUE "C" &rarr; <code>SET WS-CLOSED TO TRUE</code> moves "C" in</div>
+      </details>
+    </details>
+  </div>
+
+  <div class="exhibit flip" id="procedure">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:4/3" data-prompt="IMG-11d"
+        data-file="img-11d-procedure.webp"
+        data-alt="A cheerful factory floor where conveyor belts carry blocks stamped MOVE, ADD and PERFORM"></div>
+      <figcaption>Room 4: the factory floor.</figcaption>
+    </figure>
+    <div class="placard">
+      <h3>PROCEDURE DIVISION</h3>
+      <p class="meta">Optional &middot; The factory floor</p>
+      <p>Where the work happens. Code is organized into <b>paragraphs</b>
+        (named blocks, in Area A) made of <b>sentences</b> (ending in a
+        period) made of <b>statements</b> (verbs like <code>MOVE</code> and
+        <code>ADD</code>). Yes, it's grammar class. That was on purpose.</p>
+<pre class="cobol"><span class="col-ruler">----+----1----+----2----+----3----+----4</span><code>       <span class="k">PROCEDURE DIVISION.</span>
+       MAIN-PARA.
+           <span class="k">DISPLAY</span> <span class="s">"Hello from COBOL"</span>
+           <span class="k">STOP RUN</span>.</code></pre>
+    </div>
+  </div>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> See me at the end of every
+      division header? I close the door behind you. Forget me and the
+      compiler wanders into the next room confused.</p>
+  </div>
+
+  <div class="try-it"><p>Open the boxes for real in
+    <a href="../tutorials/02-data-division/datadiv.cob">lesson 02</a>:
+    <code>.\build.ps1 run -Name tutorials\02-data-division\datadiv.cob</code></p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

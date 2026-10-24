@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Verbose Hall · The COBOL Museum</title>
+<meta name="description" content="COBOL's verbs, from MOVE to PERFORM, shown next to how other languages say the same thing.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="verbs">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 5 &middot; Words, words, words</p>
+    <h1>The Verbose Hall</h1>
+    <p class="lede">Other languages use symbols. COBOL uses verbs. The code
+      reads like instructions to a very literal office clerk, which is
+      exactly what a computer is.</p>
+  </section>
+
+  <div class="exhibit">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:16/9" data-prompt="IMG-16"
+        data-file="img-16-add-one-plaque.webp"
+        data-alt="A brass plaque on a marble pedestal engraved ADD 1 TO COBOL GIVING COBOL"></div>
+      <figcaption>The museum's most treasured object. Please keep behind the rope.</figcaption>
+    </figure>
+    <div class="placard">
+      <h3>The Most Famous Joke</h3>
+      <p class="meta">Origin unknown &middot; still funny</p>
+      <p style="font:1.15rem var(--font-mono)">ADD 1 TO COBOL GIVING COBOL</p>
+      <p>In C, <code>C++</code> means "add one to C", which is how C++ got
+        its name. This is the COBOL version of the same joke. It is longer.
+        Of course it is longer.</p>
+      <details class="more"><summary>Tell me more</summary>
+        <p>It's also valid COBOL, as long as you declare a numeric field
+          named <code>COBOL</code>. That name isn't a reserved word, so the
+          compiler won't stop you. Your colleagues might.</p>
+      </details>
+    </div>
+  </div>
+
+  <h2>The display cases</h2>
+  <p>Each case shows a COBOL verb next to how a modern language (here,
+    Python) would say it.</p>
+
+  <div class="placard">
+    <h3>MOVE &middot; copy a value</h3>
+    <div class="table-wrap"><table>
+      <tr><th>COBOL</th><th>Python</th></tr>
+      <tr><td><code>MOVE "Grace" TO WS-FIRST-NAME</code></td><td><code>first_name = "Grace"</code></td></tr>
+      <tr><td><code>MOVE ZERO TO WS-TOTAL</code></td><td><code>total = 0</code></td></tr>
+    </table></div>
+    <p>Note the direction: COBOL reads left to right, like a sentence. And
+      MOVE quietly pads or cuts the value to fit the PIC of the field it
+      lands in.</p>
+  </div>
+
+  <div class="placard" style="margin-top:20px">
+    <h3>ADD &middot; SUBTRACT &middot; MULTIPLY &middot; DIVIDE</h3>
+    <div class="table-wrap"><table>
+      <tr><th>COBOL</th><th>Python</th></tr>
+      <tr><td><code>ADD WS-TAX TO WS-PRICE GIVING WS-TOTAL</code></td><td><code>total = price + tax</code></td></tr>
+      <tr><td><code>SUBTRACT WS-FEE FROM WS-BALANCE</code></td><td><code>balance -= fee</code></td></tr>
+      <tr><td><code>MULTIPLY WS-HOURS BY WS-RATE GIVING WS-PAY ROUNDED</code></td><td><code>pay = round(hours * rate, 2)</code></td></tr>
+      <tr><td><code>DIVIDE WS-TOTAL BY 12 GIVING WS-MONTHLY</code></td><td><code>monthly = total / 12</code></td></tr>
+    </table></div>
+    <p>Add <code>ON SIZE ERROR</code> to any of them and COBOL will tell you
+      when a result is too big for its field, instead of quietly chopping
+      off digits.</p>
+  </div>
+
+  <div class="placard" style="margin-top:20px">
+    <h3>COMPUTE &middot; for when you want a formula after all</h3>
+    <div class="table-wrap"><table>
+      <tr><th>COBOL</th><th>Python</th></tr>
+      <tr><td><code>COMPUTE WS-PAY = WS-HOURS * WS-RATE * 1.5</code></td><td><code>pay = hours * rate * 1.5</code></td></tr>
+    </table></div>
+    <p>Added because even COBOL's designers eventually wanted a <code>*</code>.</p>
+  </div>
+
+  <div class="placard" style="margin-top:20px">
+    <h3>IF &middot; EVALUATE &middot; making decisions</h3>
+    <div class="table-wrap"><table>
+      <tr><th>COBOL</th><th>Python</th></tr>
+      <tr><td><code>IF WS-BALANCE &lt; 0 DISPLAY "OVERDRAWN" END-IF</code></td><td><code>if balance &lt; 0: print("OVERDRAWN")</code></td></tr>
+      <tr><td><code>EVALUATE TRUE<br>&nbsp;&nbsp;WHEN WS-ACTIVE ...<br>&nbsp;&nbsp;WHEN OTHER ...<br>END-EVALUATE</code></td><td><code>match True:<br>&nbsp;&nbsp;case _ if active: ...<br>&nbsp;&nbsp;case _: ...</code></td></tr>
+    </table></div>
+    <p><code>EVALUATE</code> is COBOL's switch statement, and it's a good
+      one. This repo's library uses <code>EVALUATE TRUE</code> to choose
+      which function to run.</p>
+  </div>
+
+  <div class="placard" style="margin-top:20px">
+    <h3>PERFORM &middot; loops and calls</h3>
+    <div class="table-wrap"><table>
+      <tr><th>COBOL</th><th>Python</th></tr>
+      <tr><td><code>PERFORM PRINT-HEADER</code></td><td><code>print_header()</code></td></tr>
+      <tr><td><code>PERFORM 3 TIMES ... END-PERFORM</code></td><td><code>for _ in range(3): ...</code></td></tr>
+      <tr><td><code>PERFORM VARYING I FROM 1 BY 1 UNTIL I &gt; 10</code></td><td><code>for i in range(1, 11):</code></td></tr>
+    </table></div>
+  </div>
+
+  <div class="placard" style="margin-top:20px">
+    <h3>STRING &middot; UNSTRING &middot; CALL</h3>
+    <div class="table-wrap"><table>
+      <tr><th>COBOL</th><th>Python</th></tr>
+      <tr><td><code>STRING FIRST DELIMITED BY SPACE " " LAST DELIMITED BY SIZE INTO FULL</code></td><td><code>full = first.strip() + " " + last</code></td></tr>
+      <tr><td><code>UNSTRING LINE DELIMITED BY "," INTO A B C</code></td><td><code>a, b, c = line.split(",")</code></td></tr>
+      <tr><td><code>CALL "STRUTIL" USING SU-PARMS</code></td><td><code>strutil(parms)</code></td></tr>
+    </table></div>
+  </div>
+
+  <h2>Touch screen: Say it in COBOL</h2>
+  <div class="console">
+    <p class="console-title">Translation booth</p>
+    <label for="say-pick">Pick an everyday sentence</label>
+    <select id="say-pick">
+      <option value="0">Add tax to price, giving total.</option>
+      <option value="1">Copy the customer's name into the report line.</option>
+      <option value="2">Take the fee off the balance.</option>
+      <option value="3">Do the header paragraph, then do the detail paragraph 10 times.</option>
+      <option value="4">If the balance is below zero, show "OVERDRAWN".</option>
+      <option value="5">Stop the program.</option>
+    </select>
+    <div class="btn-row"><button class="btn" type="button" id="say-go">Translate</button></div>
+    <pre class="cobol" aria-live="polite"><span class="col-ruler">----+----1----+----2----+----3----+----4----+----5----+----6</span><code id="say-out">       </code></pre>
+  </div>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> COBOL has over 300 reserved
+      words. I'm the shortest one, and I'm not even a word.</p>
+  </div>
+
+  <div class="try-it"><p>Verbs at work:
+    <a href="../tutorials/03-arithmetic/arith.cob">03 arithmetic</a>,
+    <a href="../tutorials/04-control-flow/control.cob">04 control flow</a>,
+    <a href="../tutorials/06-strings/strings.cob">06 strings</a>,
+    <a href="../tutorials/08-subprograms/subprog.cob">08 CALL</a>.
+    <code>.\build.ps1 run -Name tutorials\04-control-flow\control.cob</code></p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  var LINES = [
+    ["ADD", "WS-TAX", "TO", "WS-PRICE", "GIVING", "WS-TOTAL."],
+    ["MOVE", "CUST-NAME", "TO", "RPT-NAME."],
+    ["SUBTRACT", "WS-FEE", "FROM", "WS-BALANCE."],
+    ["PERFORM", "PRINT-HEADER", "\n           PERFORM", "PRINT-DETAIL", "10", "TIMES."],
+    ["IF", "WS-BALANCE", "<", "ZERO", "\n               DISPLAY", "\"OVERDRAWN\"",
+     "\n           END-IF."],
+    ["STOP", "RUN."]
+  ];
+  var pick = document.getElementById("say-pick");
+  var out = document.getElementById("say-out");
+  var go = document.getElementById("say-go");
+  var timer = null;
+  var reduce = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function run() {
+    var words = LINES[+pick.value];
+    clearInterval(timer);
+    var text = "           ", i = 0;
+    function step() {
+      var w = words[i++];
+      text += (w.charAt(0) === "\n" || /^ +$/.test(text.slice(-1)) ? "" : " ") + w;
+      out.textContent = text;
+      if (i >= words.length) { clearInterval(timer); }
+    }
+    if (reduce) { while (i < words.length) { step(); } return; }
+    out.textContent = text;
+    timer = setInterval(step, 280);
+  }
+  go.addEventListener("click", run);
+  pick.addEventListener("change", run);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Y2K Bunker · The COBOL Museum</title>
+<meta name="description" content="Two digits, one millennium: the Year 2000 problem, why it happened and how programmers fixed it.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="y2k">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 7 &middot; 31 December 1999</p>
+    <h1>The Y2K Bunker</h1>
+    <p class="lede">Some people stocked up on canned food. Programmers
+      stocked up on coffee. This is the story of two digits, one millennium
+      and an awful lot of overtime.</p>
+  </section>
+
+  <figure class="exhibit-img">
+    <div class="frame" style="--ratio:16/9" data-prompt="IMG-19"
+      data-file="img-19-y2k-bunker.webp"
+      data-alt="A 1999 basement bunker with canned food, floppy disks and a beige monitor showing PIC 99"></div>
+    <figcaption>A typical 1999 bunker. The floppy disks were for emergencies.</figcaption>
+  </figure>
+
+  <div class="exhibit">
+    <div class="placard">
+      <h3>Two Digits</h3>
+      <p class="meta">A sensible decision, made in about 1970</p>
+      <p>Storage was very expensive. If you have millions of records, each
+        with several dates, saving two characters per date adds up. So years
+        were stored as <code>PIC 99</code>: "72" meant 1972. Everyone
+        assumed the programs would be replaced long before 2000.</p>
+      <p>They were not replaced. They were too useful.</p>
+    </div>
+    <div class="placard">
+      <h3>What could go wrong?</h3>
+      <p class="meta">The problem, in one line</p>
+      <p>On 1 January 2000, a two-digit year goes from <code>99</code> to
+        <code>00</code>. Any sum that subtracts years, sorts dates or checks
+        expiry dates suddenly thinks it's 1900. Interest, pensions, bills and
+        licences could all come out wrong.</p>
+    </div>
+  </div>
+
+  <h2>Touch screen: The Rollover Clock</h2>
+  <div class="console">
+    <p class="console-title">Bunker control panel</p>
+    <div class="clock" id="y2k-clock" aria-live="off">31-12-99  23:59:55</div>
+    <div class="btn-row">
+      <button class="btn" type="button" id="y2k-go">Ring in the year 2000</button>
+      <button class="btn secondary" type="button" id="y2k-reset">Back to 1999</button>
+    </div>
+    <div id="y2k-out" aria-live="polite"></div>
+    <div id="y2k-fix" hidden>
+      <h3>The fixes</h3>
+      <div class="table-wrap"><table>
+        <tr><th>Fix</th><th>How</th><th>Trade-off</th></tr>
+        <tr><td><b>Expansion</b></td><td>Change the field to <code>PIC 9(4)</code> and store 2000, not 00.</td>
+          <td>The right fix, but every file, record and report that holds the date must change too.</td></tr>
+        <tr><td><b>Windowing</b></td><td>Keep <code>PIC 99</code>, but decide: below 50 means 20xx, 50 and up means 19xx.</td>
+          <td>Quick and cheap. It just moves the problem to a later year.</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="exhibit flip">
+    <figure class="exhibit-img">
+      <div class="frame" style="--ratio:16/9" data-prompt="IMG-20"
+        data-file="img-20-y2k-aftermath.webp"
+        data-alt="Exhausted programmers asleep at desks after midnight on New Year's Day 2000, with party hats and confetti"></div>
+      <figcaption>00:01, 1 January 2000.</figcaption>
+    </figure>
+    <div class="placard">
+      <h3>The Aftermath</h3>
+      <p class="meta">1 January 2000</p>
+      <p>Planes did not fall out of the sky. Banks opened on Monday. Most
+        people decided Y2K had been a fuss about nothing.</p>
+      <p><b>Nothing happened because they fixed it.</b> Thousands of
+        programmers spent years reading old COBOL line by line, finding
+        every date and changing it. It may be the most successful project
+        nobody remembers.</p>
+    </div>
+  </div>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> Some windowed programs picked
+      pivot years like 2020 or 2030. If one of those ever misbehaves, you
+      know which room to visit.</p>
+  </div>
+
+  <div class="try-it"><p>Dates done properly: the
+    <a href="../lib/src/DATEUTIL.cob">DATEUTIL</a> library module uses
+    four-digit years, and its tests live in
+    <a href="../lib/tests/TEST-DATEUTIL.cob">TEST-DATEUTIL.cob</a>.
+    <code>.\build.ps1 run -Name lib\tests\TEST-DATEUTIL.cob</code></p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/y2k-clock.js"></script>
+</body>
+</html>

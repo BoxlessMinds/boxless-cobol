@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timeline Corridor · The COBOL Museum</title>
+<meta name="description" content="Every COBOL standard from COBOL-60 to COBOL 2023, plus the machines it ran on along the way.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="timeline">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 8 &middot; Sixty-plus years in one hallway</p>
+    <h1>The Timeline Corridor</h1>
+    <p class="lede">Walk the corridor from 1960 to today. Solid frames are
+      COBOL standards. Dashed frames are the machines and tools around it.
+      Scroll sideways (or down, on a phone).</p>
+  </section>
+
+  <figure class="exhibit-img">
+    <div class="frame" style="--ratio:21/9" data-prompt="IMG-21"
+      data-file="img-21-timeline-corridor.webp"
+      data-alt="A long museum corridor lined with framed portraits of computers from 1960s mainframes to modern laptops"></div>
+    <figcaption>The corridor. Mind the step at 1985.</figcaption>
+  </figure>
+
+  <div class="corridor" tabindex="0" aria-label="Timeline, scrollable">
+    <article><div class="year">1960</div><div class="tag">COBOL-60</div>
+      <p><b>What changed:</b> everything. The first specification is published.</p>
+      <p><b>Fun detail:</b> by December it runs on two different makers' machines.</p></article>
+    <article><div class="year">1961</div><div class="tag">COBOL-61</div>
+      <p><b>What changed:</b> the first revision, cleaning up problems found by real users.</p>
+      <p><b>Fun detail:</b> an "Extended" edition soon adds SORT and the Report Writer.</p></article>
+    <article class="side"><div class="year">1964</div><div class="tag">Machines</div>
+      <p><b>IBM System/360</b> arrives. One family of compatible mainframes, and COBOL becomes a standard tool on them.</p>
+      <p><b>Fun detail:</b> its descendants still run COBOL today.</p></article>
+    <article><div class="year">1965</div><div class="tag">COBOL-65</div>
+      <p><b>What changed:</b> better tables and support for mass-storage files.</p>
+      <p><b>Fun detail:</b> "mass storage" meant disks the size of washing machines.</p></article>
+    <article><div class="year">1968</div><div class="tag">ANSI COBOL 68</div>
+      <p><b>What changed:</b> the first official ANSI standard (X3.23-1968).</p>
+      <p><b>Fun detail:</b> the US government soon requires its computers to support it.</p></article>
+    <article class="side"><div class="year">1970s</div><div class="tag">Machines</div>
+      <p><b>Terminals</b> with green screens start replacing punch cards for typing code.</p>
+      <p><b>Fun detail:</b> the 80-column layout comes along anyway.</p></article>
+    <article><div class="year">1974</div><div class="tag">ANSI COBOL 74</div>
+      <p><b>What changed:</b> file handling grows up, with indexed and relative files.</p>
+      <p><b>Fun detail:</b> much of the COBOL still running today was written to this standard.</p></article>
+    <article><div class="year">1985</div><div class="tag">COBOL-85</div>
+      <p><b>What changed:</b> structured programming. <code>END-IF</code>, <code>EVALUATE</code>, inline <code>PERFORM</code>.</p>
+      <p><b>Fun detail:</b> fewer periods needed. Dot took it personally.</p></article>
+    <article class="side"><div class="year">1980s</div><div class="tag">Machines</div>
+      <p><b>PC compilers</b> let people write COBOL on a desk instead of in a machine room.</p>
+      <p><b>Fun detail:</b> the mainframe was still waiting at the other end.</p></article>
+    <article class="side"><div class="year">1999</div><div class="tag">Event</div>
+      <p><b>Y2K.</b> The biggest code review in history.</p>
+      <p><b>Fun detail:</b> see Gallery 7. Bring coffee.</p></article>
+    <article><div class="year">2002</div><div class="tag">ISO COBOL 2002</div>
+      <p><b>What changed:</b> object-oriented COBOL, free-format source and user-defined functions.</p>
+      <p><b>Fun detail:</b> yes, COBOL has classes. Few people use them.</p></article>
+    <article class="side"><div class="year">2000s</div><div class="tag">Tools</div>
+      <p><b>OpenCOBOL</b>, later renamed <b>GnuCOBOL</b>: a free compiler that turns COBOL into C. This repo uses it.</p>
+      <p><b>Fun detail:</b> it runs on a laptop, a Raspberry Pi or WSL.</p></article>
+    <article><div class="year">2014</div><div class="tag">ISO COBOL 2014</div>
+      <p><b>What changed:</b> a tidy-up. Some rarely used features become optional, and modern floating-point arrives.</p>
+      <p><b>Fun detail:</b> the standard keeps getting edited, which is more than most 1959 documents can say.</p></article>
+    <article class="side"><div class="year">2020s</div><div class="tag">Tools</div>
+      <p><b>VS Code extensions</b>, free online courses and open-source mainframe tools.</p>
+      <p><b>Fun detail:</b> COBOL now has syntax highlighting in dark mode.</p></article>
+    <article><div class="year">2023</div><div class="tag">ISO/IEC 1989:2023</div>
+      <p><b>What changed:</b> the current standard, with more modern features.</p>
+      <p><b>Fun detail:</b> COBOL turned 64 that year and was still getting new features.</p></article>
+  </div>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> COBOL-85 gave you
+      <code>END-IF</code> so you'd need me less. I'm fine. I'm totally fine.</p>
+  </div>
+
+  <div class="try-it"><p>See the COBOL-85 style for yourself: <code>END-IF</code>,
+    <code>EVALUATE</code> and inline <code>PERFORM</code> are all in
+    <a href="../tutorials/04-control-flow/control.cob">lesson 04</a>.
+    <code>.\build.ps1 run -Name tutorials\04-control-flow\control.cob</code></p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

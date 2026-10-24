@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hall of PICtures · The COBOL Museum</title>
+<meta name="description" content="An art gallery of COBOL PIC clauses, with a decoder that shows how any value is stored and printed.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="pictures">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 4 &middot; Fine art</p>
+    <h1>Hall of PICtures</h1>
+    <p class="lede">In COBOL, every variable has a <b>PICTURE</b>: a little
+      drawing of exactly what it holds. <code>9</code> is a digit,
+      <code>X</code> is any character, <code>V</code> is an invisible decimal
+      point. The curators have framed the finest examples.</p>
+  </section>
+
+  <div class="gallery-wall">
+    <article class="painting">
+      <figure class="exhibit-img">
+        <div class="frame" style="--ratio:3/4" data-prompt="IMG-12"
+          data-file="img-12-pic-salary.webp"
+          data-alt="An oil painting of stacks of coins and a paycheck in a heavy gold frame"></div>
+      </figure>
+      <p class="pic">PIC 9(5)V99</p>
+      <p class="label"><b>Untitled (Salary)</b><em>Oil on mainframe, 1974</em>
+        Five digits, then an implied point, then two more. Holds up to
+        99999.99 in seven bytes. The point is never stored. The program just
+        knows where it goes.</p>
+    </article>
+    <article class="painting">
+      <figure class="exhibit-img">
+        <div class="frame" style="--ratio:3/4" data-prompt="IMG-13"
+          data-file="img-13-pic-name.webp"
+          data-alt="A classical portrait of a customer whose name tag is followed by many empty spaces"></div>
+      </figure>
+      <p class="pic">PIC X(30)</p>
+      <p class="label"><b>Portrait of a Customer Name</b><em>Padded with spaces</em>
+        Thirty characters, always. "Ada" is stored as "Ada" plus 27 spaces.
+        COBOL never asks how long a string is. It already knows.</p>
+    </article>
+    <article class="painting">
+      <figure class="exhibit-img">
+        <div class="frame" style="--ratio:3/4" data-prompt="IMG-14"
+          data-file="img-14-pic-packed.webp"
+          data-alt="An abstract painting of tightly packed colored squares in pairs"></div>
+      </figure>
+      <p class="pic">PIC S9(7) COMP-3</p>
+      <p class="label"><b>Packed Decimal</b><em>Abstract period</em>
+        Two digits squeezed into every byte, with the sign tucked into the
+        last half-byte. Seven digits fit in four bytes. When disk space cost
+        a fortune, this was a masterpiece.</p>
+    </article>
+    <article class="painting">
+      <figure class="exhibit-img">
+        <div class="frame" style="--ratio:3/4" data-prompt="IMG-15"
+          data-file="img-15-pic-dollar.webp"
+          data-alt="A still-life painting of a dollar sign floating above a row of digits"></div>
+      </figure>
+      <p class="pic">PIC $$$,$$9.99</p>
+      <p class="label"><b>Still Life with Floating Dollar Sign</b><em>Edited picture</em>
+        For printing, not math. The dollar sign "floats" right to sit next to
+        the first real digit, so 42 prints as <code>&nbsp;&nbsp;&nbsp;&nbsp;$42.00</code>.
+        Cheque printers loved it.</p>
+    </article>
+  </div>
+
+  <div class="ruler" aria-hidden="true"><span>1-6 SEQ</span><span>7</span><span>8-11 A</span><span>12-72 AREA B</span><span>73-80 ID</span></div>
+
+  <h2>Touch screen: The PIC Decoder</h2>
+  <div class="console">
+    <p class="console-title">Conservation lab</p>
+    <div class="btn-row">
+      <button class="btn secondary" type="button" data-pic="9(5)V99" data-val="1234.567">Salary</button>
+      <button class="btn secondary" type="button" data-pic="X(10)" data-val="Grace">Name</button>
+      <button class="btn secondary" type="button" data-pic="S9(7)V99 COMP-3" data-val="-1234.50">Packed</button>
+      <button class="btn secondary" type="button" data-pic="$$$,$$9.99" data-val="42">Dollars</button>
+      <button class="btn secondary" type="button" data-pic="-,---,--9.99" data-val="-1234.5">Lesson 02</button>
+      <button class="btn secondary" type="button" data-pic="9(3)" data-val="12345">Overflow!</button>
+    </div>
+    <label for="pic-input">PIC clause (usage optional, e.g. <code>S9(5) COMP-3</code>)</label>
+    <input type="text" id="pic-input" value="9(5)V99" autocomplete="off" spellcheck="false">
+    <label for="pic-value">Value to store</label>
+    <input type="text" id="pic-value" value="1234.567" autocomplete="off" spellcheck="false">
+    <div id="pic-readout" aria-live="polite" style="margin-top:14px"></div>
+  </div>
+
+  <div class="placard">
+    <h3>Reading a picture</h3>
+    <p class="meta">Visitor's guide to the symbols</p>
+    <div class="table-wrap"><table>
+      <tr><th>Symbol</th><th>Means</th><th>Takes a byte?</th></tr>
+      <tr><td><code>9</code></td><td>A digit 0&ndash;9</td><td>Yes</td></tr>
+      <tr><td><code>X</code></td><td>Any character</td><td>Yes</td></tr>
+      <tr><td><code>A</code></td><td>A letter or space</td><td>Yes</td></tr>
+      <tr><td><code>V</code></td><td>Implied decimal point</td><td>No</td></tr>
+      <tr><td><code>S</code></td><td>The number can be negative</td><td>No (it hides in the last digit)</td></tr>
+      <tr><td><code>Z</code></td><td>A digit, but a leading zero prints as a space</td><td>Yes</td></tr>
+      <tr><td><code>$ , . + - *</code></td><td>Printed as-is, or "floating" when repeated</td><td>Yes</td></tr>
+      <tr><td><code>(n)</code></td><td>Repeat the symbol before it n times: <code>9(5)</code> = <code>99999</code></td><td>&ndash;</td></tr>
+    </table></div>
+  </div>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> In a PIC, a period is a real
+      decimal point that gets printed. A V is my invisible cousin. We don't
+      talk about the time someone mixed us up on a payroll run.</p>
+  </div>
+
+  <div class="try-it"><p>Pictures in action: arithmetic in
+    <a href="../tutorials/03-arithmetic/arith.cob">lesson 03</a> and
+    strings in <a href="../tutorials/06-strings/strings.cob">lesson 06</a>.
+    <code>.\build.ps1 run -Name tutorials\03-arithmetic\arith.cob</code></p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/pic-decoder.js"></script>
+</body>
+</html>

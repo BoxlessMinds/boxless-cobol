@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Docent Quiz · The COBOL Museum</title>
+<meta name="description" content="Ten questions from the COBOL Museum's galleries. Score 7 or more for a printable Certified COBOL Visitor badge.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="quiz">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Exit &middot; Before you go</p>
+    <h1>Exit Survey: The Docent Quiz</h1>
+    <p class="lede">Ten questions, all answered somewhere in the museum.
+      Get 7 or more right and you can print a <b>Certified COBOL
+      Visitor</b> badge. Nothing is sent anywhere; this all happens in your
+      browser.</p>
+  </section>
+
+  <form id="quiz-form"><p>The quiz needs JavaScript to run.</p></form>
+  <div id="quiz-result" aria-live="polite"></div>
+
+  <section id="badge-area" hidden>
+    <div class="console">
+      <label for="badge-name">Name for the badge</label>
+      <input type="text" id="badge-name" maxlength="40" autocomplete="off" placeholder="Your name">
+      <p style="font-size:.85rem;margin-top:6px">Your name only appears on this page. It isn't saved or sent.</p>
+    </div>
+    <div class="badge">
+      <figure class="exhibit-img" style="width:120px;margin:0 auto">
+        <div class="frame small" style="--ratio:1/1;border-radius:50%" data-prompt="IMG-27"
+          data-file="img-27-badge.webp" data-alt="A round brass enamel pin badge with a punch-card motif"></div>
+      </figure>
+      <small>THE COBOL MUSEUM HEREBY CERTIFIES</small>
+      <div class="who" id="badge-who">Your Name Here</div>
+      <small>AS A</small>
+      <div style="font:1.3rem var(--font-display)">Certified COBOL Visitor</div>
+      <small id="badge-date"></small>
+    </div>
+    <div class="btn-row" style="justify-content:center">
+      <button class="btn" type="button" data-print-target="badge">Print my badge</button>
+    </div>
+  </section>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> Thanks for visiting. Every
+      good program ends with STOP RUN and a period. So does every good tour.</p>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/quiz.js"></script>
+</body>
+</html>

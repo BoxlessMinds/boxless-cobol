@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Vault · The COBOL Museum</title>
+<meta name="description" content="Banks, paychecks, insurance and government: where COBOL is still at work today.">
+<meta property="og:image" content="assets/img/img-28-og-card.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/museum.css">
+<script>try{var t=localStorage.getItem("museum-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body data-page="vault">
+<a class="skip" href="#main">Skip to the exhibits</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <p class="kicker">Gallery 6 &middot; Not a historical exhibit</p>
+    <h1>The Vault</h1>
+    <p class="lede">Most museum pieces are retired. This one goes to work
+      every morning. Behind this door: the banks, insurers and government
+      offices where COBOL still moves the money.</p>
+  </section>
+
+  <figure class="exhibit-img">
+    <div class="frame" style="--ratio:16/9" data-prompt="IMG-17"
+      data-file="img-17-vault.webp"
+      data-alt="A huge round bank vault door swinging open to reveal a glowing blue mainframe"></div>
+    <figcaption>The vault door is open. The mainframe inside has not noticed; it is busy.</figcaption>
+  </figure>
+
+  <h2>Exhibit: You Used COBOL Today</h2>
+  <figure class="exhibit-img">
+    <div class="frame" style="--ratio:21/9" data-prompt="IMG-18"
+      data-file="img-18-everyday-cobol.webp"
+      data-alt="A triptych: a person at an ATM, a worker opening a paycheck, a family reading an insurance letter, each with a faint green code line behind"></div>
+    <figcaption>Three ordinary moments, each with a COBOL program somewhere behind it.</figcaption>
+  </figure>
+  <div class="card-grid">
+    <article class="card">
+      <span class="num">8:02 AM</span>
+      <h3>The cash machine</h3>
+      <p>You take out cash. The ATM talks to newer systems, but at many
+        banks the account record that actually changes is kept by a
+        decades-old COBOL batch or transaction program.</p>
+    </article>
+    <article class="card">
+      <span class="num">Friday</span>
+      <h3>The paycheck</h3>
+      <p>Hours times rate, plus overtime, minus tax, grouped by department:
+        payroll is the job COBOL was built for. This repo even has one
+        (see below).</p>
+    </article>
+    <article class="card">
+      <span class="num">Monthly</span>
+      <h3>The insurance letter</h3>
+      <p>Policies, premiums and claims are fixed-width records processed in
+        nightly batches. Many insurers still run that on a mainframe.</p>
+    </article>
+  </div>
+
+  <div class="exhibit">
+    <div class="placard">
+      <h3>The 2020 Call for Help</h3>
+      <p class="meta">Spring 2020</p>
+      <p>When the pandemic hit, unemployment claims in the US jumped almost
+        overnight. Several states found their benefit systems ran on COBOL,
+        and the governor of New Jersey went on television to ask for
+        volunteers who knew the language. Retired programmers answered.
+        So did a lot of curious new learners.</p>
+      <details class="more"><summary>Tell me more</summary>
+        <p>The real bottleneck was often capacity and the systems around the
+          COBOL code, not the language itself. But the moment made headlines,
+          and free courses (like the Open Mainframe Project one in the
+          <a href="resources.html">Reading Room</a>) saw a rush of sign-ups.</p>
+      </details>
+    </div>
+    <div class="placard">
+      <h3>The Stat Wall</h3>
+      <p class="meta">All figures are estimates. Read the labels.</p>
+      <ul class="holes">
+        <li><b>220 billion</b> lines of COBOL in use. <i>Estimate, Reuters,
+          2017.</i></li>
+        <li><b>95%</b> of ATM card swipes rely on COBOL code. <i>Estimate,
+          Reuters, 2017.</i></li>
+        <li><b>43%</b> of banking systems built on COBOL. <i>Estimate,
+          Reuters, 2017.</i></li>
+      </ul>
+      <p>Nobody can count every line of COBOL in the world, so treat these as
+        "a lot", "nearly all" and "nearly half". The real numbers move
+        slowly as systems are replaced.</p>
+    </div>
+  </div>
+
+  <div class="dot-says">
+    <figure class="exhibit-img"><div class="frame dot" data-prompt="IMG-02b"
+      data-file="img-02b-dot-pointing.webp" data-alt="Dot pointing like a tour guide"></div></figure>
+    <p class="bubble"><strong>Dot says:</strong> People keep calling COBOL a
+      dead language. It processed their salary this morning. Very rude.</p>
+  </div>
+
+  <div class="try-it"><p>A real job, in miniature:
+    <a href="../examples/payroll-report/payroll.cob">examples/payroll-report</a>
+    reads fixed-width records, works out overtime and tax and prints a
+    report with department subtotals.
+    <code>.\build.ps1 run -Name examples\payroll-report\payroll.cob</code></p></div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
