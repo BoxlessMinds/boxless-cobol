@@ -12,6 +12,9 @@ build/
 # Program output files written by tutorials/examples
 *.out
 
+# Personal notes for AI-assisted work
+CONTEXT/
+
 # Personal scratch space
 SCRATCH_FOLDER/*
 !SCRATCH_FOLDER/.gitkeep

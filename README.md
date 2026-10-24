@@ -81,7 +81,6 @@ lib/copybooks/        *.cpy shared layouts (COPY ...)
 lib/src/              callable modules, one per file -> build/lib/*.so
 lib/tests/            TEST-*.cob unit-test drivers
 museum/               static COBOL Museum site (open index.html)
-CONTEXT/              plans, prompts, recipes, skills (notes for AI-assisted work)
 DOCUMENTATION/        findings and longer-form notes
 SCRATCH_FOLDER/       personal scratch space (git-ignored)
 ```
